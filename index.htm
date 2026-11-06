@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎁 Bất ngờ cho Lương Thị Thảo Vân</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0b0b2a;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Nền sao lấp lánh */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle linear infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+
+        .container {
+            text-align: center;
+            z-index: 2;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Trạng thái ban đầu - màn hình tối bí ẩn */
+        .intro {
+            color: #ccc;
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease;
+            letter-spacing: 2px;
+        }
+
+        .intro span {
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .gift-box {
+            font-size: 120px;
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.3s ease;
+            animation: bounce 2s infinite;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
+            position: relative;
+        }
+
+        .gift-box:hover {
+            transform: scale(1.15) rotate(-5deg);
+        }
+
+        .gift-box:active {
+            transform: scale(0.9);
+        }
+
+        .gift-hint {
+            color: #888;
+            margin-top: 20px;
+            font-size: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Phần quà - ẩn ban đầu */
+        .surprise {
+            display: none;
+        }
+
+        .gift-content {
+            background: linear-gradient(145deg, #1a1a4e, #2d1b69);
+            border: 2px solid #ffd700;
+            border-radius: 25px;
+            padding: 40px 30px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+            animation: zoomIn 1s ease;
+            position: relative;
+        }
+
+        .gift-content::before {
+            content: '🎀';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 40px;
+        }
+
+        .gift-content h1 {
+            color: #ffd700;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 20px rgba(255,215,0,0.5); }
+            50% { text-shadow: 0 0 40px rgba(255,215,0,0.9); }
+        }
+
+        .gift-content h2 {
+            color: #fff;
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+        }
+
+        .gift-content p {
+            color: #ddd;
+            font-size: 1.15rem;
+            line-height: 2;
+            margin-bottom: 15px;
+        }
+
+        .gift-content .highlight {
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .name-display {
+            font-size: 2rem;
+            color: #ff6b6b;
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            40% { transform: scale(0.95); }
+            60% { transform: scale(1.05); }
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #ffd700, #ffaa00);
+            color: #1a1a4e;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Pháo hoa */
+        .firework {
+            position: fixed;
+            z-index: 5;
+            pointer-events: none;
+            animation: explosion 1.5s ease-out forwards;
+        }
+
+        @keyframes explosion {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        .spark {
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        /* Trái tim bay */
+        .floating-heart {
+            position: fixed;
+            bottom: -50px;
+            z-index: 1;
+            font-size: 25px;
+            animation: floatUp linear forwards;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-25px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.3); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .delayed {
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .d1 { animation-delay: 0.5s; }
+        .d2 { animation-delay: 1s; }
+        .d3 { animation-delay: 1.5s; }
+        .d4 { animation-delay: 2s; }
+        .d5 { animation-delay: 2.5s; }
+    </style>
+</head>
+<body>
+    <!-- Nền sao -->
+    <div class="stars" id="stars"></div>
+
+    <div class="container">
+        <!-- Màn hình chào ban đầu -->
+        <div id="introScreen" class="intro">
+            <p>Có một điều đặc biệt đang chờ bạn...</p>
+            <p><span>Lương Thị Thảo Vân</span> ơi, hãy chạm vào món quà nhé! 👇</p>
+        </div>
+
+        <!-- Hộp quà -->
+        <div id="giftArea">
+            <div class="gift-box" onclick="openGift()">🎁</div>
+            <div class="gift-hint">💝 Nhấn vào hộp quà để mở 💝</div>
+        </div>
+
+        <!-- Nội dung quà (ẩn ban đầu) -->
+        <div id="surprise" class="surprise">
+            <div class="gift-content">
+                <h1>🎂 Chúc Mừng Sinh Nhật 🎂</h1>
+                <div class="name-display">✨ Lương Thị Thảo Vân ✨</div>
+                
+                <p class="delayed d1">Hôm nay là ngày đặc biệt nhất,</p>
+                <p class="delayed d2">Ngày mà một người tuyệt vời ra đời! 💖</p>
+                <p class="delayed d3">Chúc bạn luôn <span class="highlight">vui vẻ, hạnh phúc</span></p>
+                <p class="delayed d4">Và <span class="highlight">tràn đầy năng lượng</span> mỗi ngày! 🌟</p>
+                <p class="delayed d5">Chúc bạn mãi xinh đẹp, thành công<br>và luôn được yêu thương! 🥰</p>
+
+                <button class="btn" onclick="restart()">🔁 Chơi Lại</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tạo nền sao
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = Math.random() * 3 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Tạo pháo hoa
+        function createFirework(x, y) {
+            const colors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#a8e6cf', '#ff9ff3', '#54a0ff', '#ffd32a'];
+            const numSparks = 40;
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            firework.style.left = x + 'px';
+            firework.style.top = y + 'px';
+            firework.style.width = '10px';
+            firework.style.height = '10px';
+
+            for (let i = 0; i < numSparks; i++) {
+                const spark = document.createElement('div');
+                spark.className = 'spark';
+                const size = Math.random() * 6 + 2;
+                spark.style.width = size + 'px';
+                spark.style.height = size + 'px';
+                spark.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                const angle = (i / numSparks) * 2 * Math.PI;
+                const distance = Math.random() * 100 + 50;
+                spark.style.left = Math.cos(angle) * distance + 'px';
+                spark.style.top = Math.sin(angle) * distance + 'px';
+                firework.appendChild(spark);
+            }
+
+            document.body.appendChild(firework);
+            setTimeout(() => firework.remove(), 1500);
+        }
+
+        // Tạo trái tim bay
+        function createHeart() {
+            const emojis = ['💖', '💕', '💗', '💓', '✨', '🌟', '🎈', '🎉'];
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 6 + 4) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 10000);
+        }
+
+        // Hàm mở quà
+        function openGift() {
+            document.getElementById('introScreen').style.display = 'none';
+            document.getElementById('giftArea').style.display = 'none';
+            document.getElementById('surprise').style.display = 'block';
+
+            // Bắn pháo hoa liên tục
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    const x = Math.random() * window.innerWidth;
+                    const y = Math.random() * window.innerHeight;
+                    createFirework(x, y);
+                }, i * 400);
+            }
+
+            // Thả trái tim liên tục
+            setInterval(createHeart, 500);
+            for (let i = 0; i < 10; i++) {
+                setTimeout(createHeart, i * 200);
+            }
+        }
+
+        // Hàm chơi lại
+        function restart() {
+            location.reload();
+        }
+
+        // Khởi tạo sao
+        createStars();
+
+        // Tạo vài ngôi sao bắn lên nền
+        setInterval(() => {
+            requestAnimationFrame(() => {});
+        }, 1000);
+    </script>
+</body>
+</html>
